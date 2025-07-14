@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/face-recog')
+mongoose.connect('mongodb+srv://gayagoyjohndavid:VHkQMxAYMoppvDhW@face-recog.5rmleju.mongodb.net/face-recog?retryWrites=true&w=majority')
     .then(() => console.log('MongoDB connected'))
 
 app.use('/api/users', userRoutes);

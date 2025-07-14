@@ -3,15 +3,18 @@ const router = express.Router();
 const User = require('../models/User');
 
 router.post('/', async (req, res) => {
-  const { email, password } = req.body;
+  const { uid, email, password, role } = req.body;
 
   try {
-    const user = new User({ email, password });
+    console.log(req.body);
+    const user = new User({ uid, email, password, role: role || 'user' });
     await user.save();
     res.status(201).json(user);
+
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error('Error creating user:', error);
+    res.status(500).json({ error: error.message });
   }
 });
 
-module.exports = router; // ✅ THIS LINE IS REQUIRED
+module.exports = router; 

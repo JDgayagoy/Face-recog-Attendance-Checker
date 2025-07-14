@@ -1,8 +1,11 @@
+const { paste } = require('@testing-library/user-event/dist/paste');
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     uid: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    role: { type: String, default: 'user' },
     createdAt: { type: Date, default: Date.now },
 })
 

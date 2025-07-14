@@ -15,11 +15,13 @@ function Signup(){
             const user = userCredential.user;
             await fetch("http://localhost:5000/api/users", {
                 method: "POST",
-                header: { 'Content-type': 'application/json' },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     uid: user.uid,
                     email: user.email,
-                    role: "user"})
+                    password: password,
+                    role: "user"
+                    })
             });
             console.log("User Created: ", userCredential);
             navigate("/login");
